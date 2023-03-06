@@ -15,7 +15,7 @@ apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     signingConfigs {
         release {
-            storeFile file('C:\\Users\\lolbr\\AndroidStudioProjects\\PexelsApplication\\store\\pexels_appkey.jks')
+            storeFile file('\\..\\store\\pexels_appkey.jks')
             storePassword '12345678'
             keyAlias 'pexels-app'
             keyPassword '12345678'
@@ -68,7 +68,6 @@ android {
     buildFeatures {
         viewBinding = true
     }
-
 }
 
 dependencies {
