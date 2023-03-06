@@ -1,7 +1,6 @@
 plugins {
     id 'com.android.application'
     id 'org.jetbrains.kotlin.android'
-    id 'com.google.gms.google-services'
 }
 
 apply plugin: 'kotlin-kapt'
@@ -16,7 +15,7 @@ apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
 android {
     signingConfigs {
         release {
-            storeFile file('\\..\\store\\wallpapers_app_key.jks')
+            storeFile file('C:\\Users\\lolbr\\AndroidStudioProjects\\PexelsApplication\\store\\pexels_appkey.jks')
             storePassword '12345678'
             keyAlias 'pexels-app'
             keyPassword '12345678'
@@ -69,6 +68,7 @@ android {
     buildFeatures {
         viewBinding = true
     }
+
 }
 
 dependencies {
@@ -102,12 +102,7 @@ dependencies {
     //paging3
     implementation "androidx.paging:paging-runtime-ktx:$paging_version"
 
-    //firebase
-    implementation platform('com.google.firebase:firebase-bom:31.2.3')
-    implementation 'com.google.firebase:firebase-analytics-ktx'
-
     //test
-
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
