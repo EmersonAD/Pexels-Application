@@ -1,0 +1,97 @@
+{
+  "project_info": {
+    "project_number": "974860874215",
+    "project_id": "pexelsapplication-021",
+    "storage_bucket": "pexelsapplication-021.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974860874215:android:f11bf633c86b35ac550d42",
+        "android_client_info": {
+          "package_name": "com.jikan.pexelsapplication"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974860874215-49ljlgtsjf5cbj2p441t5d8vqrcue6io.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0a8QSEPsxMyn_wb4S-UlR2qJ_xnmEMQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974860874215-49ljlgtsjf5cbj2p441t5d8vqrcue6io.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974860874215:android:67cade824b61368d550d42",
+        "android_client_info": {
+          "package_name": "com.jikan.pexelsapplication.debug"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974860874215-49ljlgtsjf5cbj2p441t5d8vqrcue6io.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0a8QSEPsxMyn_wb4S-UlR2qJ_xnmEMQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974860874215-49ljlgtsjf5cbj2p441t5d8vqrcue6io.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:974860874215:android:c0e77174e317c6cd550d42",
+        "android_client_info": {
+          "package_name": "com.jikan.pexelsapplication.staging"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "974860874215-49ljlgtsjf5cbj2p441t5d8vqrcue6io.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0a8QSEPsxMyn_wb4S-UlR2qJ_xnmEMQQ"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "974860874215-49ljlgtsjf5cbj2p441t5d8vqrcue6io.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
