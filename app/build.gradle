@@ -23,7 +23,7 @@ android {
     }
 
     namespace 'com.jikan.pexelsapplication'
-    compileSdk 33
+    compileSdkVersion  33
 
     defaultConfig {
         applicationId "com.jikan.pexelsapplication"
