@@ -1,4 +1,5 @@
 package com.jikan.core.data
 
-interface PopularRemoteDataSource {
+interface RemoteDataSource<T> {
+    suspend fun fetchPopular(page: Int, perPage: Int): T
 }
