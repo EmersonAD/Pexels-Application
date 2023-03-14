@@ -15,7 +15,7 @@ Pexels Application
 - [View Binding](https://developer.android.com/topic/libraries/view-binding?hl=pt-br)
 - [State](https://refactoring.guru/design-patterns/state) - Design Pattern
 - [ViewModel](https://developer.android.com/topic/libraries/architecture/viewmodel) - Architectural components
-- [Clean] - Clean Arc
+- [Clean](https://developer.android.com/training/animation/screen-slide?hl=pt-br) - Clean Arc
 - [Flow](https://developer.android.com/kotlin/flow?hl=pt-br) - Architectural components
 - [Coroutines](https://developer.android.com/kotlin/coroutines) - Async Tasks
 - [Retrofit](https://square.github.io/retrofit) - REST client
