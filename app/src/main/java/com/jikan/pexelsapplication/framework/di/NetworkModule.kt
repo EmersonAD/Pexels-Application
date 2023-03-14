@@ -34,7 +34,7 @@ object NetworkModule {
 
     @Provides
     fun provideAuthorizationInterceptor(): AuthorizationInterceptor =
-        AuthorizationInterceptor(BuildConfig.BASE_URL)
+        AuthorizationInterceptor(BuildConfig.PRIVATE_KEY)
 
     @Provides
     fun provideOkHttpClient(
