@@ -7,6 +7,7 @@ import com.jikan.core.data.PopularRepository
 import com.jikan.core.model.PhotoDomain
 import com.jikan.core.usecase.PagingUseCase
 import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.catch
 import javax.inject.Inject
 
 interface GetPopularUseCase {
