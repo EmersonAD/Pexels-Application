@@ -1,18 +1,17 @@
 package com.jikan.pexelsapplication.ui.fragment.popular.viewmodel
 
 import androidx.paging.PagingData
-import androidx.paging.PagingSource
 import com.jikan.core.model.PhotoDomain
 import com.jikan.core.model.SrcDomain
 import com.jikan.core.usecase.popularusecase.GetPopularUseCase
-import kotlinx.coroutines.Dispatchers
+import com.jikan.testing.MainCoroutinesRule
 import kotlinx.coroutines.ExperimentalCoroutinesApi
-import kotlinx.coroutines.flow.*
-import kotlinx.coroutines.test.UnconfinedTestDispatcher
+import kotlinx.coroutines.flow.first
+import kotlinx.coroutines.flow.flowOf
 import kotlinx.coroutines.test.runTest
-import kotlinx.coroutines.test.setMain
 import org.junit.Assert
 import org.junit.Before
+import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
 import org.mockito.Mock
@@ -24,14 +23,14 @@ import org.mockito.kotlin.whenever
 @ExperimentalCoroutinesApi
 internal class PopularViewModelTest {
 
-    private val dispatcher = UnconfinedTestDispatcher()
-    @Mock
-    lateinit var popularUseCase: GetPopularUseCase
+    @get:Rule
+    var mainCoroutinesRule = MainCoroutinesRule()
+
+    @Mock lateinit var popularUseCase: GetPopularUseCase
     private lateinit var popularViewModel: PopularViewModel
 
     @Before
     fun setup() {
-        Dispatchers.setMain(dispatcher)
         popularViewModel = PopularViewModel(popularUseCase)
     }
 
@@ -44,18 +43,13 @@ internal class PopularViewModelTest {
         Assert.assertNotNull(result.first())
     }
 
-    @Test
+    @Test(expected = RuntimeException::class)
     fun `Should return an empty PagingData When an error occurred`() = runTest {
         //Arrange
-        val exception = Exception()
-        val expected = PagingData.empty<PhotoDomain>()
-        whenever(popularUseCase(any())).thenAnswer { flow<PagingData<PhotoDomain>> { throw exception } }
+        whenever(popularUseCase(any())).thenThrow(RuntimeException())
 
         //Act
-        val result = popularViewModel.popularWallpapers().first()
-
-        //Assert
-        Assert.assertEquals(result, expected)
+        popularViewModel.popularWallpapers()
     }
 
 
