@@ -7,7 +7,6 @@ import com.jikan.core.data.PopularRepository
 import com.jikan.core.model.PhotoDomain
 import com.jikan.core.usecase.PagingUseCase
 import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.catch
 import javax.inject.Inject
 
 interface GetPopularUseCase {
@@ -20,8 +19,7 @@ class GetPopularUseCaseImpl @Inject constructor(
 ) : PagingUseCase<GetPopularUseCase.GetPopularParams, PhotoDomain>(), GetPopularUseCase {
 
     override fun createFlowObservable(params: GetPopularUseCase.GetPopularParams): Flow<PagingData<PhotoDomain>> {
-        return Pager(config = params.pagingConfig) {
-            repository.fetchPopular(pages = params.pagingConfig.pageSize)
-        }.flow
+        val pagingSource = repository.fetchPopular(pages = params.pagingConfig.pageSize)
+        return Pager(config = params.pagingConfig) { pagingSource }.flow
     }
 }

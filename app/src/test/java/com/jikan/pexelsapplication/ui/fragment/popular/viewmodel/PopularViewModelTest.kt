@@ -1,10 +1,9 @@
 package com.jikan.pexelsapplication.ui.fragment.popular.viewmodel
 
 import androidx.paging.PagingData
-import com.jikan.core.model.PhotoDomain
-import com.jikan.core.model.SrcDomain
 import com.jikan.core.usecase.popularusecase.GetPopularUseCase
 import com.jikan.testing.MainCoroutinesRule
+import com.jikan.testing.model.WallpapersFactory
 import kotlinx.coroutines.ExperimentalCoroutinesApi
 import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.flow.flowOf
@@ -19,14 +18,14 @@ import org.mockito.junit.MockitoJUnitRunner
 import org.mockito.kotlin.any
 import org.mockito.kotlin.whenever
 
-@RunWith(MockitoJUnitRunner::class)
 @ExperimentalCoroutinesApi
+@RunWith(MockitoJUnitRunner::class)
 internal class PopularViewModelTest {
 
     @get:Rule
     var mainCoroutinesRule = MainCoroutinesRule()
-
-    @Mock lateinit var popularUseCase: GetPopularUseCase
+    @Mock
+    lateinit var popularUseCase: GetPopularUseCase
     private lateinit var popularViewModel: PopularViewModel
 
     @Before
@@ -36,7 +35,7 @@ internal class PopularViewModelTest {
 
     @Test
     fun `Should validate pagination data`() = runTest {
-        whenever(popularUseCase(any())).thenReturn(flowOf(getPagingDataMock()))
+        whenever(popularUseCase(any())).thenReturn(flowOf(getPagingDataMock))
 
         val result = popularViewModel.popularWallpapers()
 
@@ -53,29 +52,11 @@ internal class PopularViewModelTest {
     }
 
 
-    private fun getPagingDataMock() =
-        PagingData.from(listOf(domain, domain, domain, domain, domain, domain))
-
-    private val domain = PhotoDomain(
-        description = "Free stock photo of agriculture, architecture, bright",
-        avgColor = "#56543B",
-        height = 6240,
-        id = 15575287,
-        liked = false,
-        photographer = "medinegurbet",
-        photographerId = 21435626,
-        photographerUrl = "https://www.pexels.com/@medinegurbet-21435626",
-        srcDomain = SrcDomain(
-            landscape = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=627&w=1200",
-            large = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&h=650&w=940",
-            large2x = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940",
-            medium = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&h=350",
-            original = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg",
-            portrait = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&fit=crop&h=1200&w=800",
-            small = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&h=130",
-            tiny = "https://images.pexels.com/photos/15575287/pexels-photo-15575287.jpeg?auto=compress&cs=tinysrgb&dpr=1&fit=crop&h=200&w=280"
-        ),
-        url = "https://www.pexels.com/photo/wood-summer-garden-house-15575287/",
-        width = 4160
+    private val wallpapersFactory = WallpapersFactory()
+    private val getPagingDataMock = PagingData.from(
+        listOf(
+            wallpapersFactory.create(WallpapersFactory.Photo.PhotoDomainSuccess),
+            wallpapersFactory.create(WallpapersFactory.Photo.PhotoDomainSuccess)
+        )
     )
 }
