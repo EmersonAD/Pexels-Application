@@ -6,9 +6,10 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import androidx.paging.cachedIn
 import com.jikan.core.model.PhotoDomain
+import com.jikan.core.usecase.ResultStatus
 import com.jikan.core.usecase.popularusecase.GetPopularUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.*
 import javax.inject.Inject
 
 @HiltViewModel
@@ -17,7 +18,9 @@ class PopularViewModel @Inject constructor(
 ) : ViewModel() {
 
     fun popularWallpapers(): Flow<PagingData<PhotoDomain>> {
-        return popularUseCase(GetPopularUseCase.GetPopularParams(pagingConfig)).cachedIn(viewModelScope)
+        return popularUseCase(GetPopularUseCase.GetPopularParams(pagingConfig))
+            .catch { emit(PagingData.empty()) }
+            .cachedIn(viewModelScope)
     }
 
     private val pagingConfig = PagingConfig(pageSize = 40)

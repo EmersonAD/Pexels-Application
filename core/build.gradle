@@ -9,6 +9,8 @@ java {
 }
 
 dependencies {
+    testImplementation project(':testing')
+
     // Retrofit
     api "com.squareup.retrofit2:retrofit:$retrofit_version"
     api "com.squareup.retrofit2:converter-gson:$retrofit_version"
