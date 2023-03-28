@@ -13,6 +13,8 @@ import androidx.lifecycle.repeatOnLifecycle
 import androidx.navigation.fragment.findNavController
 import androidx.paging.LoadState
 import androidx.recyclerview.widget.GridLayoutManager
+import com.google.android.material.snackbar.BaseTransientBottomBar.ANIMATION_MODE_SLIDE
+import com.google.android.material.snackbar.Snackbar
 import com.jikan.core.model.PhotoDomain
 import com.jikan.pexelsapplication.databinding.FragmentPopularBinding
 import com.jikan.pexelsapplication.ui.fragment.adapter.photoadapter.PhotoAdapter
@@ -44,10 +46,11 @@ class PopularFragment : Fragment() {
         initAdapter()
         fetchWallpapers()
         observerLoadState()
+        observerFavoriteUiState()
     }
 
     private fun initAdapter() {
-        photoAdapter = PhotoAdapter(::detail)
+        photoAdapter = PhotoAdapter(::detail, ::insertData)
         val gridLayoutManager = GridLayoutManager(requireContext(), 3)
         with(binding.recyclerViewPopular) {
             scrollToPosition(0)
@@ -89,8 +92,30 @@ class PopularFragment : Fragment() {
         }
     }
 
+    private fun observerFavoriteUiState() {
+        viewModel.favoriteUiState.observe(viewLifecycleOwner) { favoriteUiState ->
+            when (favoriteUiState) {
+                PopularViewModel.FavoriteUiState.Loading -> 1
+                is PopularViewModel.FavoriteUiState.FavoritePhoto -> {
+                    if (favoriteUiState.saved) favoriteItemMessage("item salvo")
+                    else favoriteItemMessage("erro ao salvar")
+                }
+            }
+        }
+    }
+
+    private fun favoriteItemMessage(message: String) {
+        Snackbar.make(binding.root, message, Snackbar.LENGTH_SHORT)
+            .setAnimationMode(ANIMATION_MODE_SLIDE)
+            .show()
+    }
+
     private fun detail(photo: PhotoDomain) {
-        val data = arrayOf(photo.srcDomain.original, photo.description)
+        val data = arrayOf(photo.srcDomain?.original, photo.description)
         findNavController().navigate(MainFragmentDirections.actionMainFragmentToDownloadFragment(data))
+    }
+
+    private fun insertData(photo: PhotoDomain) {
+        viewModel.insertData(photo)
     }
 }
