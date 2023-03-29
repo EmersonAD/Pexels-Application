@@ -17,11 +17,13 @@ fun ImageView.loadBlurredImageWithPlaceholder(
     val paint = Paint()
     paint.maskFilter = blurMaskFilter
     paint.color = placeholderColorInt
-    
+
     val bitmap = Bitmap.createBitmap(size, size, Bitmap.Config.ARGB_8888)
     val canvas = Canvas(bitmap)
     canvas.drawRect (0f, 0f, size.toFloat(), size.toFloat(), paint)
+
     val placeholderDrawable = BitmapDrawable(resources, bitmap)
+
     Glide.with(this)
         .load(imageUrl)
         .centerCrop()
