@@ -1,4 +1,4 @@
-package com.jikan.core.usecase
+package com.jikan.core.usecase.base
 
 sealed class ResultStatus<out T> {
     object Loading : ResultStatus<Nothing>()

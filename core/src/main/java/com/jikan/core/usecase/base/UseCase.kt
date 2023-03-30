@@ -1,4 +1,4 @@
-package com.jikan.core.usecase
+package com.jikan.core.usecase.base
 
 import androidx.paging.PagingData
 import kotlinx.coroutines.flow.Flow
@@ -19,4 +19,9 @@ abstract class UseCase<in P, out R> {
 abstract class PagingUseCase<in P, R : Any> {
     operator fun invoke(params: P): Flow<PagingData<R>> = createFlowObservable(params)
     protected abstract fun createFlowObservable(params: P): Flow<PagingData<R>>
+}
+
+abstract class FlowUseCase<in P, R : Any> {
+    suspend operator fun invoke(params: P): Flow<R> = createFlowObservable(params)
+    protected abstract suspend fun createFlowObservable(params: P): Flow<R>
 }

@@ -13,6 +13,9 @@
         <action
             android:id="@+id/action_mainFragment_to_downloadFragment"
             app:destination="@id/downloadFragment" />
+        <action
+            android:id="@+id/action_mainFragment_to_galleryFragment"
+            app:destination="@id/galleryFragment" />
     </fragment>
     <fragment
         android:id="@+id/downloadFragment"
@@ -22,5 +25,14 @@
         <argument
             android:name="image"
             app:argType="string[]" />
+    </fragment>
+    <fragment
+        android:id="@+id/galleryFragment"
+        android:name="com.jikan.pexelsapplication.ui.fragment.gallery.GalleryFragment"
+        android:label="fragment_gallery"
+        tools:layout="@layout/fragment_gallery" >
+        <action
+            android:id="@+id/action_galleryFragment_to_downloadFragment"
+            app:destination="@id/downloadFragment" />
     </fragment>
 </navigation>
