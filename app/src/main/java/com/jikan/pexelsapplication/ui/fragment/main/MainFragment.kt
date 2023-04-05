@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.app.AppCompatActivity
 import androidx.fragment.app.FragmentActivity
+import androidx.navigation.fragment.findNavController
 import com.google.android.material.tabs.TabLayoutMediator
 import com.jikan.pexelsapplication.R
 import com.jikan.pexelsapplication.databinding.FragmentMainBinding
@@ -35,6 +36,7 @@ class MainFragment : Fragment() {
         initToolbar()
         initViewPager()
         initTabLayout()
+        travelToGallery()
     }
 
     private fun initViewPager() {
@@ -53,5 +55,11 @@ class MainFragment : Fragment() {
     private fun initToolbar() {
         binding.toolbar.title = getString(R.string.app_name)
         (activity as AppCompatActivity).setSupportActionBar(binding.toolbar)
+    }
+
+    private fun travelToGallery() {
+        binding.fab.setOnClickListener {
+            findNavController().navigate(R.id.action_mainFragment_to_galleryFragment)
+        }
     }
 }

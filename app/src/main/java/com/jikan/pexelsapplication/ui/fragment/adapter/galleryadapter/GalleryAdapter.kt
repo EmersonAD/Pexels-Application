@@ -1,24 +1,26 @@
-package com.jikan.pexelsapplication.ui.fragment.adapter.photoadapter
+package com.jikan.pexelsapplication.ui.fragment.adapter.galleryadapter
 
 import android.view.ViewGroup
-import androidx.paging.PagingDataAdapter
 import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import com.jikan.core.model.PhotoDomain
+import com.jikan.pexelsapplication.ui.fragment.adapter.photoadapter.PhotoViewHolder
 
-class PhotoAdapter(
+class GalleryAdapter(
     private val clickCallback: ((photo: PhotoDomain) -> Unit),
-    private val longClickCallback: ((photo: PhotoDomain) -> Unit)
-) : PagingDataAdapter<PhotoDomain, PhotoViewHolder>(diffCallback) {
+    private val longClickCallback: ((photo: PhotoDomain) -> Unit),
+) : ListAdapter<PhotoDomain, PhotoViewHolder>(differCallback) {
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder =
-        PhotoViewHolder.create(parent, clickCallback, longClickCallback)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): PhotoViewHolder {
+        return PhotoViewHolder.create(parent, clickCallback, longClickCallback)
+    }
 
     override fun onBindViewHolder(holder: PhotoViewHolder, position: Int) {
         getItem(position)?.let { holder.bind(it) }
     }
 
     companion object {
-        private val diffCallback = object : DiffUtil.ItemCallback<PhotoDomain>() {
+        private val differCallback = object : DiffUtil.ItemCallback<PhotoDomain>() {
             override fun areItemsTheSame(oldItem: PhotoDomain, newItem: PhotoDomain): Boolean {
                 return oldItem.url == newItem.url
             }

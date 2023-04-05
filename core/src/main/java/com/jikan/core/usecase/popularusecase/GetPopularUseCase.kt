@@ -5,7 +5,7 @@ import androidx.paging.PagingConfig
 import androidx.paging.PagingData
 import com.jikan.core.data.PopularRepository
 import com.jikan.core.model.PhotoDomain
-import com.jikan.core.usecase.PagingUseCase
+import com.jikan.core.usecase.base.PagingUseCase
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
 
