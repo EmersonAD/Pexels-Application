@@ -23,7 +23,7 @@ Pexels Application
 - [Paging](https://developer.android.com/topic/libraries/architecture/paging/v3-overview?hl=pt-br) - Endless Recycler with Paging
 - [ViewPager2](https://developer.android.com/training/animation/screen-slide?hl=pt-br) - Pagination with tabs
 - [TDD](https://developer.android.com/training/testing/unit-testing/local-unit-tests?hl=pt-br) - Unit test
-- [CI/CD](https://bitrise.io) - CI/CD with Github integration
+- [CI/CD](https://bitrise.io) - CI/CD with Github and BitRise integration
 
 <div align="center">
 <p><i>Developed by <a href="https://www.linkedin.com/in/emerson-s-souza/">Emerson Soares</i></p>
