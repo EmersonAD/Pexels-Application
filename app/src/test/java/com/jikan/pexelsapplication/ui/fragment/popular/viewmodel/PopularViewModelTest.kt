@@ -1,6 +1,7 @@
 package com.jikan.pexelsapplication.ui.fragment.popular.viewmodel
 
 import androidx.paging.PagingData
+import com.jikan.core.usecase.insertgalleryusecase.InsertGalleryUseCase
 import com.jikan.core.usecase.popularusecase.GetPopularUseCase
 import com.jikan.testing.MainCoroutinesRule
 import com.jikan.testing.model.WallpapersFactory
@@ -26,11 +27,14 @@ internal class PopularViewModelTest {
     var mainCoroutinesRule = MainCoroutinesRule()
     @Mock
     lateinit var popularUseCase: GetPopularUseCase
+    @Mock
+    lateinit var insertGalleryUseCase: InsertGalleryUseCase
+
     private lateinit var popularViewModel: PopularViewModel
 
     @Before
     fun setup() {
-        popularViewModel = PopularViewModel(popularUseCase)
+        popularViewModel = PopularViewModel(popularUseCase, insertGalleryUseCase)
     }
 
     @Test
